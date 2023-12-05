@@ -5,6 +5,15 @@ import { loginAction } from '../utils/auth'
 import Dashboard from '../layouts/dashboard'
 import CarPage from '../pages/dashboard/car'
 import HomePage from '../pages/dashboard/home'
+import UserProvider from '../context/user'
+import Logout from '../components/dashboard/logout'
+
+function withUserContext(element: React.ReactNode) {
+    return (
+        // @ts-expect-error wrong types
+        <UserProvider>{element}</UserProvider>
+    )
+}
 
 const router = createBrowserRouter([
     {
@@ -18,7 +27,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: withUserContext(<Dashboard />),
         children: [
             {
                 path: '/dashboard',
@@ -27,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/cars',
                 element: <CarPage />,
+            },
+            {
+                path: '/dashboard/logout',
+                element: <Logout />,
             },
         ],
     },

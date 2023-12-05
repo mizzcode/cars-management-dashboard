@@ -1,42 +1,29 @@
-import { Outlet, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import httpFetch from '../utils/fetch'
-
-interface IUser {
-    id: number
-    email: string
-    name: string
-    role: string
-}
+import { ContextType, useContext, Context } from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
+import { UserContext, TUserContext } from '../context/user'
+import TopBar from '../components/dashboard/topbar'
 
 function DashboardPage() {
-    const [user, setUser] = useState<IUser>()
-
-    const navigate = useNavigate()
-    useEffect(() => {
-        async function getUser() {
-            await httpFetch('users/profile', {}, {}, true)
-                .then((res) => {
-                    if (!res.ok) throw new Error('Invalid token!')
-                    return res.json()
-                })
-                .then((data) => {
-                    console.log(data)
-                    return setUser(data)
-                })
-                .catch((err) => {
-                    console.error(err)
-                    return navigate('/login')
-                })
-        }
-        getUser()
-    }, [navigate])
+    const { user } = useContext(UserContext) as ContextType<Context<TUserContext>>
 
     return (
         <>
-            <h1>Dashboard</h1>
-            <p>{user && user.email + ' ' + user.name}</p>
-            <Outlet />
+            <div className='d-flex vh-100'>
+                <div className='pt-5 m-5'>
+                    <NavLink to={'/dashboard'}>Dashboard</NavLink>
+                    <br />
+                    <NavLink to={'/dashboard/cars'}>Cars</NavLink>
+                </div>
+                <div className='flex-grow-1'>
+                    <div className='p-3'>
+                        <TopBar
+                            username={user?.name}
+                            avatar={'https://s0.wp.com/wp-content/themes/a8c/gravatar-docs/assets/images/Logo.png'}
+                        />
+                        <Outlet />
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
