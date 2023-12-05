@@ -237,6 +237,15 @@ footer {
     padding: 2rem !important;
 }
 
+.dropdow-topbar {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+.dropdow-topbar:hover {
+    color: black !important;
+}
+
 @media only screen and (max-width: 1440px) {
     #search {
         bottom: -4.5rem;
