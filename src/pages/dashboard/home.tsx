@@ -1,20 +1,11 @@
-import DataTable from '../../components/dashboard/table'
-
-function OrderPage() {
+function HomePage() {
     return (
         <>
-            <h1>Dashboard</h1>
-            <p>List Order</p>
-            <p>
-                <DataTable />
-            </p>
-
-            <p>List Car</p>
-            <p>
-                <DataTable />
-            </p>
+            <div className='m-5'>
+                <h1>Dashboard</h1>
+            </div>
         </>
     )
 }
 
-export default OrderPage
+export default HomePage
