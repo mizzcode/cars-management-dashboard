@@ -1,90 +1,21 @@
-// core version + navigation, pagination modules:
-import Swiper from 'swiper'
-import { Navigation, Pagination } from 'swiper/modules'
-// import Swiper and modules styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import OffCanvas from '../../components/react-bootstrap/offcanvas'
+import Footer from '@/components/home/footer'
+import Header from '@/components/home/header'
+import HeroSection from '@/components/home/hero'
 
-export default function HomePage() {
-    new Swiper('.carousel', {
-        modules: [Navigation, Pagination],
-        loop: true,
-        autoplay: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
-        centeredSlides: true,
-        navigation: {
-            prevEl: '.prev-button',
-            nextEl: '.next-button',
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-        },
-    })
-
+function LandingPage() {
     return (
         <>
-            <header className='fixed-top'>
-                {/* Nav Section */}
-                <nav className='bg-blue navbar navbar-expand-md justify-content-center'>
-                    <div className='container-fluid col-md-10'>
-                        <a href='#'>
-                            <div className='logo' />
-                        </a>
-                        <div className='mt-2 collapse navbar-collapse justify-content-end'>
-                            <ul className='navbar-nav'>
-                                <li className='nav-item p-3'>
-                                    <a className='nav-link fw-semibold' href='#our-services'>
-                                        Our Services
-                                    </a>
-                                </li>
-                                <li className='nav-item p-3'>
-                                    <a className='nav-link fw-semibold' href='#why-us'>
-                                        Why Us
-                                    </a>
-                                </li>
-                                <li className='nav-item p-3'>
-                                    <a className='nav-link fw-semibold' href='#testimonial'>
-                                        Testimonial
-                                    </a>
-                                </li>
-                                <li className='nav-item p-3'>
-                                    <a className='nav-link fw-semibold me-4' href='#faq'>
-                                        FAQ
-                                    </a>
-                                </li>
-                            </ul>
-                            <button className='btn btn-success p-2'>
-                                <a href='#'>Register</a>
-                            </button>
-                        </div>
-                        <OffCanvas btnIcon='me-3 navbar-toggler-icon btn-offcanvas' placement='end' />
-                    </div>
-                </nav>
-            </header>
+            <Header />
             <main>
                 {/* Main Section */}
                 <section className='container-fluid bg-blue'>
-                    <div className='row row-cols-1 offset-md-1 row-cols-md-2'>
-                        <div className='col col-md-5 align-self-center'>
-                            <h1 className='mt-5 mb-3'>Sewa &amp; Rental Mobil Terbaik di Kawasan Tegal</h1>
-                            <p>
-                                Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga
-                                terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.
-                            </p>
-                            <button id='sewa' className='btn btn-success my-3 sideButton'>
-                                <a href='/cars'>Mulai Sewa Mobil</a>
-                            </button>
-                        </div>
-                        <div id='cover-img' className='col col-md-7'>
-                            <img src='icons/img_car.png' className='w-100' />
-                        </div>
-                    </div>
+                    <HeroSection
+                        title='Sewa &amp; Rental Mobil Terbaik di Kawasan Tegal'
+                        content='Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga
+                        terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.'
+                        hiddenNavLink={false}
+                        imageUrl='icons/img_car.png'
+                    />
                 </section>
                 {/* Our Service Section */}
                 <section id='our-services' className='container-fluid'>
@@ -391,58 +322,9 @@ export default function HomePage() {
                 </section>
             </main>
             {/* Footer Section */}
-            <footer className='container-fluid col-md-10'>
-                <div className='row row-cols-1'>
-                    <div className='col col-md-4 mb-3 d-flex flex-column'>
-                        <p className='my-2'>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
-                        <p className='my-2'>binarcarrental@gmail.com</p>
-                        <p className='my-2'>081-233-334-808</p>
-                    </div>
-                    <div className='col col-md-2 mb-3 d-flex flex-column fw-semibold'>
-                        <a className='my-2' href='#our-services'>
-                            Our Services
-                        </a>
-                        <a className='my-2' href='#why-us'>
-                            Why Us
-                        </a>
-                        <a className='my-2' href='#testimonial'>
-                            Testimonial
-                        </a>
-                        <a className='my-2' href='#faq'>
-                            FAQ
-                        </a>
-                    </div>
-                    <div className='col col-md-3 mb-3 d-flex flex-column'>
-                        <p className='my-2'>Connect with us</p>
-                        <div className='media-social'>
-                            <a href='#'>
-                                <img src='icons/icon_facebook.png' className='my-2 mx-1' />
-                            </a>
-                            <a href='#'>
-                                <img src='icons/icon_instagram.png' className='my-2 mx-1' />
-                            </a>
-                            <a href='#'>
-                                <img src='icons/icon_twitter.png' className='my-2 mx-1' />
-                            </a>
-                            <a href='#'>
-                                <img src='icons/icon_mail.png' className='my-2 mx-1' />
-                            </a>
-                            <a href='#'>
-                                <img src='icons/icon_twitch.png' className='my-2 mx-1' />
-                            </a>
-                        </div>
-                    </div>
-                    <div className='col col-md-3 mb-3 d-flex flex-column'>
-                        <p className='my-2'>Copyright Binar 2022</p>
-                        <a href='#'>
-                            <div className='logo mt-2' />
-                        </a>
-                    </div>
-                </div>
-            </footer>
-            {/* CDN BOOTSTRAP 5 JS */}
-            {/* CDN SWIPER JS */}
-            {/* INTERNAL JS */}
+            <Footer />
         </>
     )
 }
+
+export default LandingPage

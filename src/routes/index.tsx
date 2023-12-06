@@ -1,12 +1,13 @@
-import Root from '../pages/home'
+import LandingPage from '@/pages/home'
 import { createBrowserRouter } from 'react-router-dom'
-import LoginPage from '../pages/login'
-import { loginAction } from '../utils/auth'
-import Dashboard from '../layouts/dashboard'
-import CarPage from '../pages/dashboard/car'
-import HomePage from '../pages/dashboard/home'
-import UserProvider from '../context/user'
-import Logout from '../components/dashboard/logout'
+import LoginPage from '@/pages/login'
+import { loginAction } from '@/utils/auth'
+import Dashboard from '@/layouts/dashboard'
+import CarPage from '@/pages/dashboard/car'
+import HomePage from '@/pages/dashboard/home'
+import UserProvider from '@/context/user'
+import Logout from '@/components/dashboard/logout'
+import SearchCarsPage from '@/pages/home/cars'
 
 function withUserContext(element: React.ReactNode) {
     return (
@@ -18,7 +19,11 @@ function withUserContext(element: React.ReactNode) {
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Root />,
+        element: <LandingPage />,
+    },
+    {
+        path: '/cars',
+        element: <SearchCarsPage />,
     },
     {
         path: '/login',
