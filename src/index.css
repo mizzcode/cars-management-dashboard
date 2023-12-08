@@ -191,10 +191,14 @@ a {
     object-fit: cover;
 }
 
+.add-car i,
+.edit i,
+.delete i,
 .car i {
     position: relative;
     top: 0.3rem;
 }
+
 .car p {
     margin-bottom: 0.3rem !important;
 }
@@ -227,6 +231,34 @@ a {
     width: 23px;
 }
 
+.fi-plus {
+    background: url('../icons/fi_plus.svg');
+    background-repeat: no-repeat;
+
+    display: inline-block;
+    margin-top: 0.5rem;
+    height: 20px;
+    width: 23px;
+}
+.fi-trash {
+    background: url('../icons/fi_trash.svg');
+    background-repeat: no-repeat;
+
+    display: inline-block;
+    margin-top: 0.5rem;
+    height: 20px;
+    width: 23px;
+}
+.fi-edit {
+    background: url('../icons/fi_edit.svg');
+    background-repeat: no-repeat;
+
+    display: inline-block;
+    margin-top: 0.5rem;
+    height: 20px;
+    width: 23px;
+}
+
 footer {
     margin-top: 6rem;
     margin-bottom: 3rem;
@@ -244,6 +276,55 @@ footer {
 
 .dropdow-topbar:hover {
     color: black !important;
+}
+
+.new-car {
+    margin-left: 55rem !important;
+    margin-bottom: 2rem;
+}
+
+.add-car {
+    background-color: #0d28a6 !important;
+    padding-bottom: 0.5rem;
+    padding-top: 0rem;
+}
+
+.delete {
+    color: red !important;
+    background-color: white !important;
+    border: solid 1px red !important ;
+    padding: 1rem !important;
+    padding-top: 0rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.edit {
+    padding: 1rem !important;
+    padding-top: 0rem !important;
+    padding-bottom: 0.5rem !important;
+    border: 1px solid #5cb85f;
+}
+
+.topbar {
+    width: 113%;
+    position: relative;
+    left: -8rem;
+}
+
+@media only screen and (min-width: 1500px) {
+    .dropdow-topbar {
+        margin-right: -12rem;
+    }
+
+    .new-car {
+        margin-left: 95rem !important;
+        margin-bottom: 2rem;
+    }
+
+    .delete,
+    .edit {
+        width: 44% !important;
+    }
 }
 
 @media only screen and (max-width: 1440px) {
