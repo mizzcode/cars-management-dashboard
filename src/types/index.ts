@@ -26,8 +26,5 @@ export type Car = {
 }
 
 export type hero = {
-    title: string
-    content: string
     hiddenNavLink: boolean
-    imageUrl: string
 }
