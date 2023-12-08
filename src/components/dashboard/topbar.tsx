@@ -1,5 +1,7 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import Dropdown from 'react-bootstrap/Dropdown'
+import { IoLogOut } from 'react-icons/io5'
+
 type TopBar = {
     username: string | undefined
     avatar: string
@@ -7,10 +9,10 @@ type TopBar = {
 
 const TopBar = ({ username, avatar }: TopBar) => {
     return (
-        <Navbar bg='light' expand='lg'>
+        <Navbar bg='white' expand='lg' className='shadow-sm rounded topbar'>
             <Container>
                 <Navbar.Brand href='#home'></Navbar.Brand>
-                <Nav className='ml-auto'>
+                <Nav>
                     <Dropdown>
                         <img src={avatar} alt='User Avatar' style={{ width: '2rem', marginRight: '1rem' }} />
                         <Dropdown.Toggle className='dropdow-topbar' id='dropdown-basic'>
@@ -18,7 +20,10 @@ const TopBar = ({ username, avatar }: TopBar) => {
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
                             <Dropdown.Item className='dropdow-topbar' href='/dashboard/logout'>
-                                Logout
+                                <div className='d-flex align-items-center'>
+                                    <IoLogOut />
+                                    <div className='ms-2'>Logout</div>
+                                </div>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
