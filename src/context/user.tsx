@@ -2,6 +2,7 @@ import { Context, ContextType, createContext, useEffect, useState } from 'react'
 import { User } from '../types'
 import { useNavigate } from 'react-router-dom'
 import httpFetch from '../utils/fetch'
+import CarProvider from './car'
 
 export type TUserContext = {
     user: User | undefined
@@ -34,7 +35,12 @@ const UserProvider: React.FC<React.ReactNode> = ({ children }) => {
         getUser()
     }, [navigate])
 
-    return <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    return (
+        <UserContext.Provider value={{ user }}>
+            {/* @ts-expect-error wrong types */}
+            <CarProvider>{children}</CarProvider>
+        </UserContext.Provider>
+    )
 }
 
 export default UserProvider
