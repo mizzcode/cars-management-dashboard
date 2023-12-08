@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect } from 'react-router-dom'
-import { login } from '../apis/auth'
+import { login } from '@/apis/auth'
 
 export async function loginAction({ request }: LoaderFunctionArgs) {
     try {
