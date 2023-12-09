@@ -23,7 +23,7 @@ function Testimonial() {
                         spaceBetween: 20,
                     },
                 }}>
-                <SwiperSlide className='p-5 testimony'>
+                <SwiperSlide className='p-5 testimony bg-blue'>
                     <div className='d-flex flex-column flex-md-row'>
                         <div className='rater-img'>
                             <img src='icons/rater_1.png' className='w-50' />
@@ -39,7 +39,7 @@ function Testimonial() {
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='p-5 testimony'>
+                <SwiperSlide className='p-5 testimony bg-blue'>
                     <div className='d-flex flex-column flex-md-row'>
                         <div className='rater-img'>
                             <img src='icons/rater_2.png' className='w-50' />
@@ -55,7 +55,7 @@ function Testimonial() {
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='p-5 testimony'>
+                <SwiperSlide className='p-5 testimony bg-blue'>
                     <div className='d-flex flex-column flex-md-row'>
                         <div className='rater-img'>
                             <img src='icons/rater_1.png' className='w-50' />
@@ -71,7 +71,7 @@ function Testimonial() {
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide className='p-5 testimony'>
+                <SwiperSlide className='p-5 testimony bg-blue'>
                     <div className='d-flex flex-column flex-md-row'>
                         <div className='rater-img'>
                             <img src='icons/rater_2.png' className='w-50' />
