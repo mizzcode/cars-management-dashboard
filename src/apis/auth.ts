@@ -40,7 +40,62 @@ export async function addCar(data: FormData) {
         true
     )
         .then((res) => {
-            if (!res.ok) throw new Error('Forbidden!')
+            if (!res.ok) throw new Error()
+            return res.json()
+        })
+        .then((data) => data)
+        .catch((err) => console.error(err))
+
+    return car
+}
+
+export async function deleteCar(id?: string) {
+    const car = await httpFetch(
+        `cars/${id}`,
+        {},
+        {},
+        {
+            method: 'DELETE',
+        },
+        true
+    )
+        .then((res) => {
+            if (!res.ok) throw new Error()
+            return res.json()
+        })
+        .then((data) => data)
+        .catch((err) => console.error(err))
+
+    return car
+}
+
+export async function editCar(id?: string, data?: FormData) {
+    console.log(id)
+    const car = await httpFetch(
+        `cars/${id}`,
+        { 'Content-Type': 'application/json' },
+        {},
+        {
+            method: 'PATCH',
+            body: JSON.stringify({
+                plate: data?.get('plate'),
+                manufacture: data?.get('manufacture'),
+                model: data?.get('model'),
+                rentPerDay: Number(data?.get('rentPerDay')),
+                capacity: Number(data?.get('capacity')),
+                description: data?.get('description'),
+                transmission: data?.get('transmission'),
+                available: Boolean(data?.get('available')),
+                type: data?.get('type'),
+                year: Number(data?.get('year')),
+                options: data?.get('options'),
+                specs: data?.get('specs'),
+            }),
+        },
+        true
+    )
+        .then((res) => {
+            if (!res.ok) throw new Error()
             return res.json()
         })
         .then((data) => data)
