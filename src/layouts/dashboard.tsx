@@ -2,9 +2,23 @@ import { ContextType, useContext, Context } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { UserContext, TUserContext } from '../context/user'
 import TopBar from '../components/dashboard/topbar'
+import { useEffect } from 'react'
+import localforage from 'localforage'
+import { useNavigate } from 'react-router-dom'
 
 function DashboardPage() {
     const { user } = useContext(UserContext) as ContextType<Context<TUserContext>>
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        async function getToken() {
+            const token = await localforage.getItem('token')
+            if (!token) return navigate('/login')
+        }
+
+        getToken()
+    }, [navigate])
 
     return (
         <>
