@@ -20,7 +20,9 @@ function DashboardPage() {
                             username={user?.name}
                             avatar={'https://s0.wp.com/wp-content/themes/a8c/gravatar-docs/assets/images/Logo.png'}
                         />
-                        <Outlet />
+                        <div className='p-3' style={{ backgroundColor: '#f4f5f7' }}>
+                            <Outlet />
+                        </div>
                     </div>
                 </div>
             </div>
