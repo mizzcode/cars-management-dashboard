@@ -4,7 +4,7 @@ import { Form } from 'react-router-dom'
 function FormLogin() {
     return (
         <>
-            <Form method='post'>
+            <Form method='post' action='/login'>
                 <div className='d-flex flex-column'>
                     <label className='mb-3'>
                         <span>Email: </span>
