@@ -1,7 +1,7 @@
 function HomePage() {
     return (
         <>
-            <div className='m-5'>
+            <div>
                 <h1>Dashboard</h1>
             </div>
         </>
