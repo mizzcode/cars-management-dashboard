@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect } from 'react-router-dom'
-import { addCar, login } from '@/apis/auth'
+import { addCar, deleteCar, editCar, login } from '@/apis/auth'
 
 export async function loginAction({ request }: LoaderFunctionArgs) {
     try {
@@ -31,5 +31,41 @@ export async function addAction({ request }: LoaderFunctionArgs) {
         return redirect('/dashboard/cars')
     } catch (err) {
         console.error(err)
+    }
+}
+
+export async function deleteAction({ params }: LoaderFunctionArgs) {
+    try {
+        const car = await deleteCar(params.id)
+
+        if (car.status === 'Fail') {
+            throw new Error(car)
+        }
+
+        return redirect('/dashboard/cars')
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+export async function editAction({ request, params }: LoaderFunctionArgs) {
+    try {
+        const formData = await request.formData()
+
+        console.log(formData.get('plate'))
+        console.log(Number(formData.get('rentPerDay')))
+
+        const car = await editCar(params.id, formData)
+
+        console.log(car)
+
+        if (!car) {
+            throw new Error(car)
+        }
+
+        return redirect('/dashboard/cars')
+    } catch (err) {
+        console.error(err)
+        return null
     }
 }
