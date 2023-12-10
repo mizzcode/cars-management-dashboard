@@ -289,6 +289,15 @@ footer {
     padding-top: 0rem;
 }
 
+.cancel {
+    background-color: transparent !important;
+    color: #0d28a6;
+}
+
+.cancel:hover {
+    color: #0d28a6;
+}
+
 .delete {
     color: red !important;
     background-color: white !important;
