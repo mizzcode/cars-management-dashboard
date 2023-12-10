@@ -25,6 +25,11 @@ export type Car = {
     updated_by: string
 }
 
-export type hero = {
+export type Hero = {
     hiddenNavLink: boolean
+}
+
+export type Headers = {
+    'Content-Type'?: string
+    Authorization?: string
 }
