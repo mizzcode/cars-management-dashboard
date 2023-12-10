@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs, redirect } from 'react-router-dom'
-import { login } from '@/apis/auth'
+import { addCar, login } from '@/apis/auth'
 
 export async function loginAction({ request }: LoaderFunctionArgs) {
     try {
@@ -15,5 +15,21 @@ export async function loginAction({ request }: LoaderFunctionArgs) {
     } catch (err) {
         console.error(err)
         return redirect('/login')
+    }
+}
+
+export async function addAction({ request }: LoaderFunctionArgs) {
+    try {
+        const formData = await request.formData()
+
+        const car = await addCar(formData)
+
+        if (car.status === 'Fail') {
+            throw new Error(car)
+        }
+
+        return redirect('/dashboard/cars')
+    } catch (err) {
+        console.error(err)
     }
 }
