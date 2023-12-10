@@ -33,7 +33,7 @@ function CarPage() {
                 <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 text-start'>
                     {/* @ts-expect-error map  */}
                     {cars?.map((car) => (
-                        <div className='col mb-4' key={car.plate}>
+                        <div className='col mb-4' key={car.id}>
                             <div className='card h-100 p-2'>
                                 <div className='card-body'>
                                     <div className='car'>
