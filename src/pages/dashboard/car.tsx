@@ -1,6 +1,7 @@
 import { CarContext, TCarContext } from '@/context/car'
 import { useContext, ContextType, Context } from 'react'
 import { Button } from 'react-bootstrap'
+import { Form } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
 function CarPage() {
@@ -28,7 +29,7 @@ function CarPage() {
                     </NavLink>
                 </div>
 
-                {!cars && <h3 className='text-center'>Loading...</h3>}
+                {!cars && <h3 className='text-center'>Loading... or refresh the page</h3>}
 
                 <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 text-start'>
                     {/* @ts-expect-error map  */}
@@ -52,14 +53,24 @@ function CarPage() {
                                         </p>
                                     </div>
                                 </div>
-                                <div className='d-flex justify-content-center align-items-center'>
-                                    <Button className='delete mb-3 fw-bold me-4 ' style={{ width: '40%' }}>
+                                <Form
+                                    method='post'
+                                    action={`${car.id}/delete`}
+                                    onSubmit={(event) => {
+                                        if (!confirm('Please confirm you want to delete this record.')) {
+                                            event.preventDefault()
+                                        }
+                                    }}>
+                                    <Button className='delete mb-3 fw-bold me-4' style={{ width: '40%' }} type='submit'>
                                         <i className='fi-trash'></i>Delete
                                     </Button>
+                                </Form>
+
+                                <NavLink to={`/dashboard/cars/${car.id}/edit`}>
                                     <Button className='edit mb-3 fw-bold' style={{ width: '40%' }}>
                                         <i className='fi-edit'></i>Edit
                                     </Button>
-                                </div>
+                                </NavLink>
                             </div>
                         </div>
                     ))}
