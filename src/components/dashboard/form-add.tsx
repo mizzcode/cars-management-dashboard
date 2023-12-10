@@ -41,7 +41,14 @@ function FormAddCar() {
                     </div>
                     <div className='d-flex mb-4 ms-4'>
                         <label className='col-form-label me-5'>Transmission</label>
-                        <input className='form-control border-black ms-auto w-75 me-5' name='transmission' />
+                        <select
+                            name='transmission'
+                            className='form-select border-black ms-auto w-75 me-5'
+                            aria-label='Default select example'>
+                            <option value='Manual'>Manual</option>
+                            <option value='Automanual'>Automanual</option>
+                            <option value='Automatic'>Automatic</option>
+                        </select>
                     </div>
                     <div className='d-flex mb-4 ms-4'>
                         <label className='col-form-label me-5'>Available</label>
@@ -55,14 +62,7 @@ function FormAddCar() {
                     </div>
                     <div className='d-flex mb-4 ms-4'>
                         <label className='col-form-label me-5'>Type</label>
-                        <select
-                            name='type'
-                            className='form-select border-black ms-auto w-75 me-5'
-                            aria-label='Default select example'>
-                            <option value='Manual'>Manual</option>
-                            <option value='Automanual'>Automanual</option>
-                            <option value='Automatic'>Automatic</option>
-                        </select>
+                        <input className='form-control border-black ms-auto w-75 me-5' name='type' />
                     </div>
                     <div className='d-flex mb-4 ms-4'>
                         <label className='col-form-label me-5'>Year</label>
