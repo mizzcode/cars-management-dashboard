@@ -15,15 +15,12 @@ const CarProvider: React.FC<React.ReactNode> = ({ children }) => {
     const navigate = useNavigate()
     useEffect(() => {
         async function getCar() {
-            await httpFetch('cars', {}, {}, false)
+            await httpFetch('cars', {}, {}, {}, false)
                 .then((res) => {
                     if (!res.ok) throw new Error('Invalid token!')
                     return res.json()
                 })
-                .then((data) => {
-                    console.log(data)
-                    setCars(data)
-                })
+                .then((data) => setCars(data))
                 .catch((err) => {
                     console.error(err)
                     return navigate('/login')
