@@ -14,14 +14,14 @@ const UserProvider: React.FC<React.ReactNode> = ({ children }) => {
     const [user, setUser] = useState<User | undefined>()
 
     /**
-     * note: alih-alih login mendapatkan token kemudian get profile dengan token nya tapi malah get profile dulu baru post login
-     * hasilnya invalid token, maka harus 2x login atau bisa langsung ke url dashboard, dan bekerja
+     * note: gak tau kenapa user pertama kali login itu malah ditolak padahal token udah masuk, jadinya malah redirect ke login lagi,
+     * tapi bisa ke dashboard jika udah pertama kali login, hanya saja pas pertama kali login itu dia ditolak
      */
 
     const navigate = useNavigate()
     useEffect(() => {
         async function getUser() {
-            await httpFetch('users/profile', {}, {}, true)
+            await httpFetch('users/profile', {}, {}, {}, true)
                 .then((res) => {
                     if (!res.ok) throw new Error('Invalid token!')
                     return res.json()
