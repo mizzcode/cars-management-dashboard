@@ -1,8 +1,8 @@
 import { Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import { hero } from '@/types'
+import { Hero } from '@/types'
 
-function HeroSection({ hiddenNavLink }: hero) {
+function HeroSection({ hiddenNavLink }: Hero) {
     return (
         <section className='container-fluid bg-blue'>
             <div className='row row-cols-1 offset-md-1 row-cols-md-2'>
