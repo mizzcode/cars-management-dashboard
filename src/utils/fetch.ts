@@ -1,9 +1,11 @@
 import localforage from 'localforage'
+import { Headers } from '@/types'
 
 const BACKEND_URL = import.meta.env['VITE_BACKEND_URL']
 
 async function httpFetch(
     path: string,
+    headers: Headers,
     searchParams?: Record<string, unknown>,
     options?: RequestInit,
     withToken?: boolean
@@ -12,11 +14,6 @@ async function httpFetch(
 
     for (const key in searchParams) {
         url.searchParams.append(key, String(searchParams[key]))
-    }
-
-    const headers: HeadersInit = {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
     }
 
     if (withToken) {
