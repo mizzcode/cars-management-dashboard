@@ -1,6 +1,5 @@
 import { Context, ContextType, createContext, useEffect, useState } from 'react'
 import { User } from '../types'
-import { useNavigate } from 'react-router-dom'
 import httpFetch from '../utils/fetch'
 import CarProvider from './car'
 
@@ -18,7 +17,6 @@ const UserProvider: React.FC<React.ReactNode> = ({ children }) => {
      * tapi bisa ke dashboard jika udah pertama kali login, hanya saja pas pertama kali login itu dia ditolak
      */
 
-    const navigate = useNavigate()
     useEffect(() => {
         async function getUser() {
             await httpFetch('users/profile', {}, {}, {}, true)
@@ -27,13 +25,10 @@ const UserProvider: React.FC<React.ReactNode> = ({ children }) => {
                     return res.json()
                 })
                 .then((data) => setUser(data))
-                .catch((err) => {
-                    console.error(err)
-                    return navigate('/login')
-                })
+                .catch((err) => console.error(err))
         }
         getUser()
-    }, [navigate])
+    }, [])
 
     return (
         <UserContext.Provider value={{ user }}>
