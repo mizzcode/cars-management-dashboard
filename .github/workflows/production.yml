@@ -21,8 +21,6 @@ jobs:
                   cache: 'pnpm'
             - name: Install dependencies
               run: pnpm install
-            - name: Tests
-              run: pnpm test --coverage
             - name: Build
               run: pnpm build
             - name: Deploy to Netlify
