@@ -6,14 +6,25 @@ on:
 jobs:
     build:
         runs-on: ubuntu-22.04
+        strategy:
+            matrix:
+                node-version: [20]
         steps:
             - uses: actions/checkout@v3
-            - name: Install
-              run: npm install
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 8
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+            - name: Install dependencies
+              run: pnpm install
             - name: Tests
-              run: npm test
+              run: pnpm test --coverage
             - name: Build
-              run: npm run build
+              run: pnpm build
             - name: Deploy to Netlify
               uses: nwtgck/actions-netlify@v2.0
               with:
