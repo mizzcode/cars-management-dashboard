@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 export type TCarContext = {
     cars: Car | undefined
     car: Car | undefined
-    setCar: Car | undefined
+    setCar: (prevCar: unknown) => Car | Car
 }
 export const CarContext = createContext<ContextType<Context<TCarContext>> | null>(null)
 
